@@ -1,0 +1,12 @@
+ function: greet
+ positonal parameters: none
+ keyword parameters: none
+ return: None
+ function: boolean
+ positonal parameters: ['hush']
+ keyword parameters: none
+ return: True
+ function: yyui
+ positonal parameters: none
+ keyword parameters: none
+ return: <function logger_decorator at 0x1031b71c0>
