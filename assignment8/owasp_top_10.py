@@ -6,13 +6,13 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
-url_2021_list = 'https://owasp.org/Top10/2021/'
-driver.get(url_2021_list)
+url_2025_list = 'https://owasp.org/Top10/2025/'
+driver.get(url_2025_list)
 
 #create list vulnerabilities
 vulnerabilities = []
-# find the 2021 top 10 list  links 
-link_elements = driver.find_elements(By.XPATH, '//h3[@id="the-top-102021-list"]/following-sibling::ol/li/a')
+# find the 2025 top 10 list  links 
+link_elements = driver.find_elements(By.XPATH, '//h3[@id="top-102025-list"]/following-sibling::ol/li/a')
 
 for link in link_elements:
         #print(f"{link.text}: {link.get_attribute('href')}")
@@ -34,3 +34,5 @@ with open('./assignment8/owasp_top_10.csv', 'w', newline='') as file:
     writer.writerow(["Name", "Link"])
     for link in vulnerabilities:
         writer.writerow([link["name"], link["url"]])
+
+
