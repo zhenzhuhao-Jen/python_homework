@@ -54,7 +54,7 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         CREATE TABLE IF NOT EXISTS Magazines (
             magazine_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL UNIQUE,
-            publisher_id INTEGER,
+            publisher_id INTEGER NOT NULL,
             FOREIGN KEY (publisher_id) REFERENCES Publishers (publisher_id)
         )
         """)
@@ -70,7 +70,7 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS Subscriptions (
             subscription_id INTEGER PRIMARY KEY,
-            subscriber_id INTEGER,
+            subscriber_id INTEGER UNIQUE,
             magazine_id INTEGER,
             expiration_date TEXT NOT NULL,
             FOREIGN KEY (subscriber_id) REFERENCES Subscribers (subscriber_id),
@@ -107,7 +107,7 @@ with  sqlite3.connect("../db/magazines.db") as conn:
 
     #retrieve all magazines sorted by name
 
-    cursor.execute("SELECT name FROM Magazines ORDER BY name")
+    cursor.execute("SELECT * FROM Magazines ORDER BY name")
     result = cursor.fetchall()
     for row in result:
             print(row)
