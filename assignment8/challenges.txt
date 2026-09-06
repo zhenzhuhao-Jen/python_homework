@@ -1,0 +1,2 @@
+The challenging part of completing this task is finding the XPATH for the links.
+I googled the method for how to use xpath to find elements that don't have id or class, and I used the sytax for my assignment.
