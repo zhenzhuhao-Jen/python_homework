@@ -22,4 +22,6 @@ with sqlite3.connect("../db/lesson.db") as conn:
 
     #write this dataframe to csv file
     df.to_csv('order_summary.csv')
+
+    conn.close()
     

@@ -28,6 +28,11 @@ def add_subscriber(cursor, name, address):
 
 def add_subscription(cursor, subscriber_id, magazine_id, expiration_date):
     try:
+        cursor.execute("SELECT * FROM Subscriptions WHERE subscriber_id = ? AND magazine_id = ?", (subscriber_id , magazine_id))
+        results = cursor.fetchall()
+        if len(results) > 0:
+            print(f"subscriber {subscriber_id } already subscribed magazine {magazine_id}.")
+            return
         cursor.execute("INSERT INTO Subscriptions (subscriber_id, magazine_id, expiration_date) VALUES (?,?,?)", (subscriber_id, magazine_id, expiration_date))
     except sqlite3.IntegrityError:
         print("error adding subscription")
@@ -70,7 +75,7 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS Subscriptions (
             subscription_id INTEGER PRIMARY KEY,
-            subscriber_id INTEGER UNIQUE,
+            subscriber_id INTEGER,
             magazine_id INTEGER,
             expiration_date TEXT NOT NULL,
             FOREIGN KEY (subscriber_id) REFERENCES Subscribers (subscriber_id),
