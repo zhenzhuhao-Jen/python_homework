@@ -68,7 +68,8 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         CREATE TABLE IF NOT EXISTS subscribers (
             subscriber_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
-            address TEXT NOT NULL
+            address TEXT NOT NULL,
+            UNIQUE (name, address)
         )
         """)
 
