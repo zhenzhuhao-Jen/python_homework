@@ -14,7 +14,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
     print(f'first 5 rows after add column total: \n{df.head()}')
 
     #group dataframe
-    df = df.groupby('product_id').agg({'line_item_id': 'count', 'total': 'sum', 'product_name': 'first'})
+    df = df.groupby('product_id').agg({'line_item_id': 'count', 'total': 'sum', 'product_name': 'first'}).reset_index()
     print(f'first 5 rows after group dataframe: \n{df.head()}')
 
     #Sort the DataFrame by the product_name column.
