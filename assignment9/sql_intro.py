@@ -49,14 +49,14 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         #subscribers: subscriber_id; name; address;
         #subscriptions: subscripotion_id; subscriber_id; magazine_id; expiration_date (a string) 
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Publishers (
+        CREATE TABLE IF NOT EXISTS publishers (
             publisher_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL UNIQUE
         )
         """)
 
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Magazines (
+        CREATE TABLE IF NOT EXISTS magazines (
             magazine_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL UNIQUE,
             publisher_id INTEGER NOT NULL,
@@ -65,7 +65,7 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         """)
 
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Subscribers (
+        CREATE TABLE IF NOT EXISTS subscribers (
             subscriber_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
             address TEXT NOT NULL
@@ -73,7 +73,7 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         """)
 
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Subscriptions (
+        CREATE TABLE IF NOT EXISTS subscriptions (
             subscription_id INTEGER PRIMARY KEY,
             subscriber_id INTEGER,
             magazine_id INTEGER,
