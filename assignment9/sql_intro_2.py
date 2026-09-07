@@ -21,7 +21,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
     df = df.sort_values(by='product_name')
 
     #write this dataframe to csv file
-    df.to_csv('order_summary.csv')
+    df.to_csv('order_summary.csv', index=False)
 
     conn.close()
     
