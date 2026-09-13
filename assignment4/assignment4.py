@@ -25,8 +25,8 @@ print(task2_employees)
  
 json_employees = pd.read_json('additional_employees.json')
 print(json_employees)
-
-more_employees = pd.concat([task1_older, json_employees], ignore_index=True)
+print("combined dataframe:")
+more_employees = pd.concat([task2_employees, json_employees], ignore_index=True)
 print(more_employees)
 
 
@@ -52,8 +52,8 @@ print(clean_data)
 clean_data["Age"] = pd.to_numeric(clean_data["Age"], errors="coerce")
 print(clean_data)
 #4
-clean_data["Salary"] = pd.to_numeric(clean_data["Salary"], errors="coerce")
 clean_data["Salary"] = clean_data["Salary"].replace("unknown", "n/a").fillna(pd.NA)
+clean_data["Salary"] = pd.to_numeric(clean_data["Salary"], errors="coerce")
 print(clean_data)
 #5
 mean_age = clean_data["Age"].mean()
