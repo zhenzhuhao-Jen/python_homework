@@ -124,6 +124,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
     cursor.execute(query)
     results = cursor.fetchall()
     for row in results:
-        print(row)
+        employee_id, first_name, last_name, count_of_orders = row
+        print(employee_id, first_name, last_name, count_of_orders)
     
 
