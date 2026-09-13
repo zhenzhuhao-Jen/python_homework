@@ -18,7 +18,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
     query = """
     SELECT o.order_id, SUM(p.price * li.quantity) AS total
     FROM orders o
-    RIGHT JOIN line_items li ON o.order_id = li.order_id
+    JOIN line_items li ON o.order_id = li.order_id
     JOIN products p ON p.product_id = li.product_id
     GROUP BY o.order_id
     ORDER BY o.order_id  
