@@ -26,9 +26,12 @@ with sqlite3.connect("../db/lesson.db") as conn:
     """
 
     cursor.execute(query)
-    print(cursor.fetchall())
-
-    #conn.close()
+    results = cursor.fetchall()
+    for row in results:
+        order_id = row[0]
+        total = row[1]
+        print(f"order_id: {order_id}, total_price: {total}")
+    
 
 
     #Task 2: Understanding Subqueries
@@ -50,7 +53,9 @@ with sqlite3.connect("../db/lesson.db") as conn:
     """
 
     cursor.execute(query)
-    print(cursor.fetchall())
+    results = cursor.fetchall()
+    for row in results:
+        print(f"customer: {row[0]}, average_total_price: {row[1]}")
 
 
 
