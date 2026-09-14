@@ -49,13 +49,13 @@ with sqlite3.connect("../db/lesson.db") as conn:
         GROUP BY o.order_id, o.customer_id
         )  AS subquery
     ON c.customer_id = subquery.customer_id_b 
-    GROUP BY c.customer_id, c.customer_name;
+    GROUP BY c.customer_id;
     """
 
     cursor.execute(query)
     results = cursor.fetchall()
     for row in results:
-        print(f"customer: {row[0]}, average_total_price: {row[1]}")
+        print(f"customer name: {row[0]}, average_total_price: {row[1]}")
 
 
 
