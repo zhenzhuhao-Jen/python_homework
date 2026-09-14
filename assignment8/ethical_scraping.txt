@@ -1,0 +1,38 @@
+#Task 5
+
+Q1: Which sections of the website are restricted for crawling?
+A: these are the paths are restricted: 
+    Disallow: /w/
+    Disallow: /api/
+    Disallow: /trap/
+    Disallow: /wiki/Special:
+    Disallow: /wiki/Spezial:
+    Disallow: /wiki/Spesial:
+    Disallow: /wiki/Special%3A
+    Disallow: /wiki/Spezial%3A
+    Disallow: /wiki/Spesial%3A
+
+Q2:Are there specific rules for certain user agents
+A:  Yes, following are the rules:
+    Per their statement, semrushbot respects crawl-delay directives
+    # We want them to overall stay within reasonable request rates to
+    # the backend (20 rps); keeping in mind that the crawl-delay will
+    # be applied by site and not globally by the bot, 5 seconds seem
+    # like a reasonable approximation
+    User-agent: SemrushBot
+    Crawl-delay: 5
+    Friendly, low-speed bots are welcome viewing article pages, but not
+    # dynamically-generated pages please.
+    #
+    # Inktomi's "Slurp" can read a minimum delay between hits; if your
+    # bot supports such a thing using the 'Crawl-delay' or another
+    # instruction, please let us know.
+    #
+    # There is a special exception for API mobileview to allow dynamic
+    # mobile web & app views to load section content.
+    # These views aren't HTTP-cached but use parser cache aggressively
+    # and don't expose Special-pages and other uncached content.
+
+Q3:Reflect on why websites use robots.txt and write 2-3 sentences explaining its purpose and how it promotes ethical scraping. 
+A: robots.txt is a file that specifies which sections of a website can or cannot be accessed by web crawlers.
+It helps website owners control the traffic to their site and avoid server overload. Ethical scraping involves reviewing and adhering to the rules set in robots.txt.
