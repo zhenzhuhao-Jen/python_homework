@@ -41,6 +41,7 @@ more_employees.info()
 
 
 #Task 4
+print('Task4:\n')
 #1
 dirty_data = pd.read_csv('dirty_data.csv')
 print(dirty_data)
@@ -48,11 +49,13 @@ clean_data = dirty_data.copy()
 #2
 clean_data.drop_duplicates(inplace = True)
 print(clean_data)
+print(f"number of rows remaining: {clean_data.shape[0]}")
 #3
 clean_data["Age"] = pd.to_numeric(clean_data["Age"], errors="coerce")
 print(clean_data)
 #4
-clean_data["Salary"] = clean_data["Salary"].replace("unknown", "n/a").fillna(pd.NA)
+clean_data["Salary"] = clean_data["Salary"].replace("unknown", pd.NA)
+clean_data["Salary"] = clean_data["Salary"].replace("n/a", pd.NA)
 clean_data["Salary"] = pd.to_numeric(clean_data["Salary"], errors="coerce")
 print(clean_data)
 #5
@@ -62,9 +65,11 @@ salary_median = clean_data["Salary"].median()
 clean_data["Salary"] = clean_data["Salary"].fillna(salary_median)
 print(clean_data)
 #6
-clean_data["Hire Date"]= pd.to_datetime(clean_data["Hire Date"], format='mixed', errors="coerce")
+clean_data["Hire Date"]= pd.to_datetime(clean_data["Hire Date"], format="mixed", errors="coerce")
+print(f"Nat value: {clean_data['Hire Date'].isna().sum()}")
+
 print(clean_data)
-#fix the Nat
+
 
 #7
 clean_data["Name"] = clean_data["Name"].str.strip()
