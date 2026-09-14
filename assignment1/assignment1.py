@@ -26,8 +26,9 @@ def calc(a, b, operation="multiply"):
                 return(a // b)
             case "power":
                 return(a ** b)
-        result = a * b
-        print(result)
+            case _:
+                return(a * b)
+        
     except ZeroDivisionError:
         return("You can't divide by 0!")
     except TypeError:
@@ -125,11 +126,20 @@ def pig_latin(str):
 
 
         else:
-            while word[0] not in {"a", "e", "i", "o", "u"}:
-                word = word[1:] + word[0]
-            if (word[0]=="u") & (word[-1]=="q"):
-                word = word[1:] + word[0]
-            words[i] = word + "ay"
+            
+            index = 0
+            word_len = len(word)
+            while index < word_len and  word[index] not in {"a", "e", "i", "o", "u"}:
+                
+                if index < word_len - 1 and word[index] == 'q' and word[index + 1] == 'u':
+                    index = index + 2
+                else:
+                    index = index + 1
+
+
+            words[i] = word[index:] + word[:index] + 'ay'
+            
+            
             
     newStr = " ".join(words)
     return newStr
